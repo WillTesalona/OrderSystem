@@ -1,0 +1,46 @@
+<?xml version="1.0"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <xsd:element name="menu">
+    <xsd:complexType>
+      <xsd:all>
+        <xsd:element ref="mains" minOccurs="0" maxOccurs="1"/>
+        <xsd:element ref="sides" minOccurs="0" maxOccurs="1"/>
+        <xsd:element ref="drink" minOccurs="0" maxOccurs="1"/>
+      </xsd:all>
+    </xsd:complexType>
+  </xsd:element>
+
+  <xsd:element name="mains">
+    <xsd:complexType>
+    <xsd:sequence>
+        <xsd:element name="Item" type="xsd:string" minOccurs="1"/>
+        <xsd:element name="Category" type="xsd:string" minOccurs="1"/>
+        <xsd:element name="Price" type="xsd:int" minOccurs="1"/>
+        <xsd:element name="img" type="xsd:string" minOccurs="1"/>
+    </xsd:sequence>
+    </xsd:complexType>
+  </xsd:element>
+
+  <xsd:element name="sides">
+    <xsd:complexType>
+    <xsd:sequence>
+        <xsd:element name="Item" type="xsd:string" minOccurs="1"/>
+        <xsd:element name="Category" type="xsd:string" minOccurs="1"/>
+        <xsd:element name="Price" type="xsd:int" minOccurs="1"/>
+        <xsd:element name="img" type="xsd:string" minOccurs="1"/>
+    </xsd:sequence>
+    </xsd:complexType>
+  </xsd:element>
+
+  <xsd:element name="drink">
+    <xsd:complexType>
+    <xsd:sequence>
+        <xsd:element name="Item" type="xsd:string" minOccurs="1"/>
+        <xsd:element name="Category" type="xsd:string" minOccurs="1"/>
+        <xsd:element name="Price" type="xsd:int" minOccurs="1"/>
+        <xsd:element name="img" type="xsd:string" minOccurs="1"/>
+    </xsd:sequence>
+    </xsd:complexType>
+  </xsd:element>
+
+</xsd:schema>

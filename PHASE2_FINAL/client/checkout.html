@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href = "../css/Style.css" rel = "stylesheet">
+    <link href = "../css/tab.css" rel = "stylesheet">
+    <link href = "../css/newheader.css" rel = "stylesheet">
+    <link href= "../css/checkout.css" rel="stylesheet">
+    <title>Checkout Form</title>
+</head>
+
+
+    <body>
+        <header class="header header-dark bg-dark header-sticky">
+            <div class="container">
+                <div class="row">
+                    <nav class="navbar navbar-expand-lg navbar-dark">
+                        
+                        <div class ="logo">
+                        <img src="../css/logo.png" alt="Logo" width="130">
+                        </div>
+        
+        
+                        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarMenu" aria-expanded="false" aria-label="Toggle navigation">
+                            <span class="navbar-toggler-icon"></span>
+                        </button>
+        
+                        <div class="navbarMenu" id="navbarMenu">
+                          
+                                    <a class=" address" href="#" data-toggle="modal" data-target="#addressModal"></i><b>Combo Meals</b><br></a>
+                             
+                        </div>
+        
+                        
+                    </nav>
+                </div>
+
+            </div>
+        </header>
+
+
+
+
+<!------------------------------------------------>
+
+    
+<!------------------------------------------------>
+
+    <div class="dashboard">
+            
+        <div class="checkoutbg">
+            <form action="confirmation.html">
+            
+                <br><h2>Checkout</h2><br>
+                <div class="orderDetails">
+                    <h3>Order Details:</h3>
+                    <div class="formGroup">
+                        <label for="name">Full Name:</label>
+                        <input type="text" name="name" placeholder="Enter Full Name" />
+                    </div>
+                   
+                    <div class="formGroup">
+
+                        <label for="date">Date of Order:</label>
+                        <input type="date" id="date" name="date" />
+                    </div>
+                    <div class="formGroup">
+                        <label for="amount">Payment Amount:</label>
+                        <input type="number" id="amount" name="amount" placeholder="Enter Payment Amount" />
+                        <p class="error"></p>
+                    </div>
+                    <div class="formGroup">
+                        <label for="cutlery">Need Cutlery?</label>
+                        <input type="checkbox" id="cutlery" name="cutlery" />
+                    </div>
+                </div>
+                <div class="submitContainer">
+                    <input type="submit" value="Submit" onclick="return validatePayment(event);" />
+                </div>               
+                <div class="cancelContainer">
+                    <input type="submit" value="Cancel Order" formaction="MCO1.html" onclick="resetQuantities(),resetPrices()" />
+                </div>
+            </form>   
+            </div>
+        </div>
+        
+
+        <div class="checkoutOrder">
+            <h3>My Cart:</h3>
+            <p1 id = "cDish"></p1>
+            <p2 id = "cSide"></p2>
+            <p3 id = "cDrink"></p3>
+          
+            <div class="order-amounts">
+                <span id="itemAmount"></span>
+               
+                <p id="AmountElement" style="display: none;"></p>
+            </div>
+            <div id="orderAmountsContainer">
+             
+            </div>
+            <div class="order-prices">
+                <span id="itemPrice"></span>
+            </div>
+    
+            <!-- Side Dish -->
+            <div class="order-amounts">
+                <span id="sideAmount"></span>
+              
+                <p id="SideAmountElement" style="display: none;"></p>
+            </div>
+            <div id="sideOrderAmountsContainer">
+                <!-- The side dish order amounts will be dynamically updated here -->
+            </div>
+            <div class="order-prices">
+                <span id="sidePrice"></span>
+            </div>
+    
+             <!-- Drinks Dish -->
+             <div class="order-amounts">
+                <span id="drinkAmount"></span>
+                <!-- <img id="DrinkImageElement" src="" alt="Drinks Image" style="display: none; width: 50px; height: 50px"> -->
+                <p id="DrinkAmountElement" style="display: none;"></p>
+            </div>
+            <div id="drinkOrderAmountsContainer">
+                <!-- The side dish order amounts will be dynamically updated here -->
+            </div>
+            <div class="order-discount">
+                
+            </div>
+            <div class="order-prices-container"></div>
+            <div class="order-prices">
+                <span id="discounted-price"></span><br>
+                <span id="totalPrice"></span>
+            </div>
+            </div>
+
+
+          
+              
+        <script>
+            let orderDetails = {};
+
+            let orderDiscount = 0;
+                // Validates the payment
+                // Validates the payment
+            // Validates the payment
+            function validatePayment(event) {
+
+                event.preventDefault(); // Prevent form submission by default
+                
+
+
+                var totalPriceElement = document.getElementById('totalPrice');
+                var total_price = parseFloat(totalPriceElement.textContent.replace("Total Price: PHP ", ""));
+                var payment_amount = parseFloat(document.getElementById('amount').value);
+                var errorElement = document.querySelector('.error');
+
+                var fullName = document.querySelector('input[name="name"]').value;
+                var dateElement = document.querySelector('input[name="date"]');
+                var selectedDate = new Date(dateElement.value);
+
+                var discount = 0;
+                var discountedPriceElement = document.querySelector(".checkoutOrder .discounted-price");
+                if (discountedPriceElement) {
+                    var discountedPriceText = discountedPriceElement.textContent;
+                    discount = parseFloat(discountedPriceText.replace("Combo Discount: ", "").replace("% off", "")) / 100;
+                }
+
+                var currentDate = new Date();
+
+                if (selectedDate < currentDate.setHours(0, 0, 0, 0)) {
+                    errorElement.textContent = "Invalid date. Please select a future date for the order.";
+                    return false;
+                }
+
+                // Use the calculated discount from discountedPriceElement
+                if (discount > 0) {
+                    var discountedAmount = total_price * discount; // Use the correct variable name 'discount'
+                    total_price = total_price - discountedAmount;
+                }
+
+                if (isNaN(payment_amount) || payment_amount <= 0) {
+                    errorElement.textContent = "Please fill in all the required fields.";
+                    return false;
+                }
+
+                if (payment_amount < total_price) {
+                    errorElement.textContent = "Payment amount is lower than the total price.";
+                    return false;
+                }
+
+                if (fullName.trim() === '' || dateElement.value === '') {
+                    errorElement.textContent = "Please fill in all the required fields.";
+                    return false;
+                }   
+
+                errorElement.textContent = ""; // Clear error message
+
+                var data = {
+                    chosenDish: orderDetails.chosenDish,
+                    chosenSide: orderDetails.chosenSide,
+                    chosenDrink: orderDetails.chosenDrink,
+                    itemAmount: orderDetails.itemAmount,
+                    sideAmount: orderDetails.sideAmount,
+                    drinkAmount: orderDetails.drinkAmount,
+                    discountPrice: localStorage.getItem('discountPrice'),
+                    name: fullName,
+                    date: selectedDate.toISOString(),
+                    originalTotalPrice: localStorage.getItem('originalTotalPrice')
+                };
+                console.log(data);
+
+
+                sendDataToServer(data);
+                
+
+                event.target.form.submit();
+                return true;
+               
+            }
+
+            function sendDataToServer(data) {
+                fetch('../server/insertDB.php', {
+                    method: 'POST',
+                    body: JSON.stringify(data),
+                    headers: {
+                        'Content-Type': 'application/json'
+                    }
+                })
+                .then(response => response.text())
+                .then(result => {
+                    console.log(result); // Log the response
+                })
+                .catch(error => {
+                    console.error('Error:', error);
+                });
+            }
+
+           
+            //calculates discounted proce
+            async function calculateDiscountedPrice(chosenDish, chosenSide, chosenDrink) {
+                try {
+                    const response = await fetch(`../server/getDiscount.php?chosenDish=${chosenDish}&chosenSide=${chosenSide}&chosenDrink=${chosenDrink}`);
+                    if (!response.ok) {
+                        throw new Error('Network response was not ok');
+                    }
+                    const discount = await response.text(); // Use response.text() for plain text response
+                    return parseFloat(discount);
+                } catch (error) {
+                    console.error('Error:', error);
+                    return 0; // Return a default value (e.g., 0) in case of an error
+                }
+            }
+
+
+
+            
+
+            document.addEventListener('DOMContentLoaded', async function () {
+    // Retrieve the saved order details from local storage
+            const orderDetailsString = localStorage.getItem('orderDetails');
+            if (orderDetailsString) {
+                orderDetails = JSON.parse(orderDetailsString);
+                    // Now you have access to the selected items, quantities, and total price
+                    const chosenDish = orderDetails.chosenDish;
+                    const itemAmount = orderDetails.itemAmount;
+                    const chosenSide = orderDetails.chosenSide;
+                    const sideAmount = orderDetails.sideAmount;
+                    const chosenDrink = orderDetails.chosenDrink;
+                    const drinkAmount = orderDetails.drinkAmount;
+                    let totalPrice = orderDetails.totalPrice;
+                    const mainPrice = parseFloat(localStorage.getItem('mainPrice'));
+                    const sidePrice = parseFloat(localStorage.getItem('sidePrice'));
+                    const drinkPrice = parseFloat(localStorage.getItem('drinkPrice'));
+
+                    const originalTotalPrice = totalPrice;
+                    
+                    
+                    // Display the selected items and quantities
+                    const cDishElement = document.getElementById('cDish');
+                    cDishElement.textContent = `${itemAmount}x ${chosenDish} - PHP ${mainPrice * itemAmount}`; // Placeholder for price
+
+                    const cSideElement = document.getElementById('cSide');
+                    cSideElement.textContent = `${sideAmount}x ${chosenSide} - PHP ${sidePrice * sideAmount}`;
+
+                    const cDrinkElement = document.getElementById('cDrink');
+                    cDrinkElement.textContent = `${drinkAmount}x ${chosenDrink} - PHP ${drinkPrice * drinkAmount}`;
+
+                    const discount = await calculateDiscountedPrice(chosenDish, chosenSide, chosenDrink);
+
+                    orderDiscount = await calculateDiscountedPrice(chosenDish, chosenSide, chosenDrink);
+                    let discountPrice = totalPrice;
+
+        // Now you have the discount value, and you can use it here
+                    if (discount > 0) {
+                        const totalPriceDiv = document.getElementById('totalPrice');
+                        const discountedPriceDiv = document.getElementById('discounted-price');
+                        discountedPriceDiv.textContent = `Combo Discount: ${discount * 100}% off\n`;
+                        discountPrice = totalPrice - totalPrice * discount;
+                        totalPrice = totalPrice - totalPrice * discount;
+                        totalPriceDiv.textContent = `Total Price: PHP ${totalPrice.toFixed(2)}`;
+                        
+                    } else {
+                        const totalPriceDiv = document.getElementById('totalPrice');
+                        totalPriceDiv.textContent = `Total Price: PHP ${totalPrice}`;
+                    }
+
+                    localStorage.setItem('originalTotalPrice', originalTotalPrice);
+                    localStorage.setItem('discountPrice', discountPrice);
+
+
+                
+                }
+            });
+         
+       
+            function resetPrices(){
+             localStorage.setItem('totalPrice', '0');
+             localStorage.setItem('discounted-price','0');
+             
+            }
+
+        </script>
+        </div>
+    </body>
+</html>

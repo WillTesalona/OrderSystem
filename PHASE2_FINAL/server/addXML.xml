@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<menu>
+    <mains>
+        <Item>Fries</Item>
+        <Category>Mains</Category>
+        <Price>100</Price>
+        <img>https://www.recipetineats.com/wp-content/uploads/2022/09/Fries-with-rosemary-salt_1.jpg</img>
+    </mains>
+
+    <sides>
+        <Item>Corns</Item>
+        <Category>Sides</Category>
+        <Price>70</Price>
+        <img>https://thehonoursystem.com/wp-content/uploads/2020/07/Garlic-Parmesan-Corn-Recipe-5.jpg</img>
+    </sides>
+
+    <drink>
+        <Item>Smoothie</Item>
+        <Category>Drink</Category>
+        <Price>80</Price>
+        <img>https://www.blessthismessplease.com/wp-content/uploads/2022/06/tropical-smoothie-recipe-5.jpg</img>
+    </drink>
+</menu>

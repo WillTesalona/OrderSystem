@@ -1,0 +1,333 @@
+
+/* :root{
+    --darkgrey: #363636;
+    --lightgrey: #f1f1ee;
+    --white: #fffefa;
+    --black: #171717;
+    --green: #216313;
+} */
+
+/*
+Set to all element
+*/
+
+* {
+    margin: 0;
+    padding: 0;
+    outline: none;
+    box-sizing: border-box;
+    font-family: 'Trebuchet MS', sans-serif;
+}
+
+body {
+    position: relative;
+    width: 100%;
+    height: auto;
+    color: var(--black);
+  }
+  
+  body::before {
+    content: "";
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url("background.jfif"); /* Replace with the path to your background image */
+    background-size: cover;
+    filter: blur(10px); /* Adjust the blur amount as desired */
+    z-index: -1;
+  }
+
+p{
+    font-size: 14px;
+    margin-left: 10px;
+    font-family: Tahoma, sans-serif;
+}
+
+.headerDiv{
+    position: fixed;
+    background-color: rgb(19, 36, 6);
+    color: var(--white);
+    width: 100%;
+    height: 9.5%;
+    padding-inline-start: 15px 420px 15px 60px;
+    top: 0;
+    z-index: 2;
+}
+
+.headerText{
+    text-align: left;
+    text-indent: 90px;
+    margin-top: 20px;
+}
+
+.logo{
+    position: fixed;
+    top: 3px;
+    left: 6%; /* Set left to 50% */
+    transform: translateX(-50%);
+    height: 60px;
+    width: 60px;
+    border-radius: 30px;
+    object-fit: cover;
+}
+
+.socmed{
+    position: fixed;
+    top: 10px;
+    left: 1200px;
+    height: 50px;
+    width: 230px;
+}
+
+
+.dashboardDiv{
+    height: 100%;
+    width: 100%;
+    padding-right: 360px;
+    padding-left: 60px;
+    background-color: var(--lightgrey);
+}
+
+.dashboardBanner{
+    width: 100%;
+    height: 200px;
+    position: relative;
+    margin-top: 4rem;
+    padding-inline-start: 1rem;
+    border-radius: 30px;
+}
+
+.dashboardBanner > img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 30px;
+}
+.dashboardContent {
+    display: flex;
+    flex-wrap: wrap;
+    
+    gap: 20px;
+    padding: 0.5rem 1rem 1rem 1rem;
+    position: relative;
+}
+
+.dashboardCard {
+    flex: 0 0 calc(33.33% - 20px); /* 33.33% to show 3 cards in a row, 20px for the gap */
+    background-color: rgba(255, 255, 255, 0.768);
+    box-shadow: var(--black);
+    height: 280px;
+    border-radius: 15px;
+    position: relative;
+}
+
+
+
+
+
+
+
+
+
+.cardImage{
+    width: 340px;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 15px;
+}
+
+.buttonPlusImage{
+    padding: 0px 0px;
+    position: right;
+    position: absolute;
+    bottom: 10px;
+    right: 10px;
+    cursor: pointer;
+    border: none;
+    background: none;
+
+    
+    
+}
+
+.buttonMinusImage{
+    padding: 0px 0px;
+    position: right;
+    position: absolute;
+    bottom: 11px;
+    right: 50px;
+    cursor: pointer;
+    border: none;
+    background: none;
+}
+
+.buttonPlusImage img{
+    width: 25px;
+    height: 25px;
+}
+
+.buttonMinusImage img{
+    width: 22px;
+    height: 22px;
+}
+
+.dashboardOrder {
+    width: 320px;
+    min-height: 100%;
+    position: fixed;
+    top: 125px;
+    right: 0;
+    padding: 0.5rem 1.5rem;
+    background-color: rgba(255, 255, 255, 0.467);
+    z-index: 3;
+}
+
+body {
+
+    background-color: rgba(245, 255, 245, 0.755);
+
+}
+
+
+
+.dashboardOrder > h3{
+    padding: 10px 0; 
+}
+
+
+.dashboardCard:hover{
+    box-shadow: 0 0 20px 0 rgba(255, 255, 255, 0.811);
+}
+
+.cardDetail h4 {
+  margin-left: 10px; /* Adjust the value to move the text to the right */
+  margin-top: 10px;
+}
+
+.titles h1 {
+  font-size: 40px;
+  margin-bottom: 30px;
+  margin-top: 30px;
+  text-shadow: 2px 2px 4px rgba(48, 48, 48, 0.677);
+  color: rgba(222, 222, 222, 0.763);
+  
+}
+
+
+.submitorder{
+
+    width: 100%;
+    height: 10px;
+    background-color: var(--green);
+    border-radius: 15px;
+    border: none;
+    color: var(--white);
+    font-size: 20px;
+    font-weight: bold;
+    cursor: pointer;
+    margin-top: 20px;
+}
+
+
+.delete-button{
+
+    width: 100%;
+    height: 10px;
+    background-color: var(--green);
+    border-radius: 15px;
+    border: none;
+    color: var(--white);
+    font-size: 20px;
+    font-weight: bold;
+    cursor: pointer;
+    margin-top: 20px;
+}
+
+  /* CSS to style the order amounts container */
+  .order-amounts {
+    
+    display: flex;
+    flex-direction: column; 
+    gap: 50px;
+  }
+
+  .order-amounts img {
+    width: 50px;
+    height: 50px;
+  }
+  
+  .order-amounts p {
+    display: flex;
+    align-items: center;
+    margin: 0;
+    gap: 100px;
+  }
+
+
+  .order-amounts p + p {
+    margin-top: 100px; /* Adjust the value as needed */
+  }
+
+  .order-amounts > div {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  .order-total {
+    position: fixed;
+    top: 600px;
+    left: 95%; /* Set left to 50% */
+    transform: translateX(-50%);
+    height: 60px;
+    width: 100px;
+    border-radius: 30px;
+    object-fit: cover;
+  }
+
+  
+
+
+  .checkout {
+    padding: 0;
+    position: absolute;
+    top: 500px; /* Adjust the top value to avoid overlapping with the cards */
+    right: 84px;
+    cursor: pointer;
+    border: none;
+    background: none;
+}
+
+.checkout img{
+    width: 150px;
+    height: 70px;
+}
+
+.order-prices {
+    position: fixed;
+    top: 590px;
+    right: 120px;
+    /* Add other styles as needed */
+  }
+  
+  .order-prices span {
+    display: block; /* Change display from inline to block */
+    margin-bottom: 3px; /* Add margin to create space between the elements */
+  }
+  
+  
+
+  .order-prices-container {
+    text-align: center;
+  }
+  .order-prices {
+    font-weight: bold; /* Make the text bold */
+    margin-top: 5px; /* Adjust the top margin for spacing */
+  /* Center-align the text */
+  }
+  
+  .order-prices span {
+    display: block; /* Display each span on a new line */
+    margin: 0px 0; /* Add margin to separate the spans */
+  }

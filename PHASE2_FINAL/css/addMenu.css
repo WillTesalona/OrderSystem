@@ -1,0 +1,72 @@
+
+ .options-container .option {
+    margin-bottom: 10px;
+    text-align: center;
+}
+
+.options-container a button {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: rgba(255, 255, 255, 0.9); 
+    color: #333;
+    border: none;
+    border-radius: 4px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    text-decoration: none;
+}
+
+.options-container a button:hover {
+    background-color: rgba(255, 255, 255, 0.7); 
+}
+
+/* Login Button Styles */
+.submitContainer input[type="submit"] {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: rgba(255, 255, 255, 0.9);
+    color: #333;
+    border: none;
+    border-radius: 4px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.submitContainer input[type="submit"]:hover {
+    background-color: rgba(255, 255, 255, 0.7); 
+}
+
+
+    
+
+.image-preview {
+    text-align: center;
+    margin-top: 10px;
+    display: flex;
+    justify-content: center;
+}
+
+
+#preview-image {
+    max-width: 300px; 
+    max-height: 200px; 
+    display: none;
+}
+.formGroup select {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: #f7f7f7;
+    color: #444;
+    font-size: 14px;
+    margin-top: 5px;
+}
+
+.formGroup label {
+    font-size: 14px;
+    font-weight: bold;
+    margin-bottom: 5px;
+}

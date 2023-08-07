@@ -1,0 +1,51 @@
+.dashboard {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+}
+
+.checkoutbg {
+    width: 700px;
+    padding: 3rem;
+    background-color: rgba(255, 255, 255, 0.7);
+    border-radius: 5px;
+}
+
+.checkoutbg h2 {
+    text-align: center;
+    margin-bottom: 1rem;
+}
+
+.orderDetails {
+    margin-bottom: 1.5rem;
+}
+
+.formGroup {
+    margin-bottom: 1rem;
+}
+
+.formGroup label {
+    display: block;
+    margin-bottom: 0.5rem;
+}
+
+.formGroup input[type="text"],
+.formGroup input[type="password"] {
+    width: 100%;
+    padding: 0.5rem;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+}
+
+.submitContainer {
+    text-align: center;
+}
+
+.CancelContainer {
+    text-align: center;
+}
+
+body {
+    background-color: rgba(245, 255, 245, 0.755);
+}
